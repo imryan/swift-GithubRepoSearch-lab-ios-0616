@@ -11,6 +11,9 @@ import SwiftyJSON
 
 class GithubRepository {
     
+    var name: String
     
-
+    init(item: JSON) {
+        self.name = item["full_name"].string!
+    }
 }

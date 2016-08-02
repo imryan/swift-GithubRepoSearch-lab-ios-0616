@@ -11,12 +11,14 @@ import UIKit
 class ReposDataStore {
     
     static let sharedInstance = ReposDataStore()
-    private init() {}
     
+    let api = GithubAPIClient.sharedInstance
     var repositories:[GithubRepository] = []
     
-    
-    
-    
-
+    func searchForRepository(name: String, completion: () -> ()) {
+        api.searchForRepository(name) { (repositories) in
+            self.repositories = repositories
+            completion()
+        }
+    }
 }
